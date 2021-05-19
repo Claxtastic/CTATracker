@@ -4,17 +4,23 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def multidex_version = "2.0.1"
+def roomVersion = "2.3.0"
+def retroFitVersion = "2.9.0"
+def composeVersion = "1.0.0-beta07"
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     buildFeatures {
+        compose true
         viewBinding true
     }
 
     defaultConfig {
         applicationId "net.thomasclaxton.ctatracker"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         multiDexEnabled true
@@ -40,12 +46,29 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    composeOptions {
+        kotlinCompilerVersion = "1.4.32"
+        kotlinCompilerExtensionVersion = composeVersion
+    }
 }
 
 dependencies {
-    def multidex_version = "2.0.1"
-    def roomVersion = "2.3.0"
-    def retroFitVersion = "2.9.0"
+    // Compose components
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    // Tooling support (Previews, etc.)
+    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation("androidx.compose.foundation:foundation:$composeVersion")
+    // Material Design
+    implementation("androidx.compose.material:material:$composeVersion")
+    // Material design icons
+    implementation("androidx.compose.material:material-icons-core:$composeVersion")
+    implementation("androidx.compose.material:material-icons-extended:$composeVersion")
+    // Integration with observables
+    implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
+    implementation("androidx.compose.runtime:runtime-rxjava2:$composeVersion")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
 
     // Room components
     implementation "androidx.room:room-ktx:$roomVersion"

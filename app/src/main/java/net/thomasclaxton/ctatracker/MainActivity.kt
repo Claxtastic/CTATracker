@@ -4,10 +4,18 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusModifier
 import androidx.recyclerview.widget.LinearLayoutManager
 import net.thomasclaxton.ctatracker.adapter.ETAAdapter
 import net.thomasclaxton.ctatracker.adapter.LineAdapter
 import net.thomasclaxton.ctatracker.databinding.ActivityMainBinding
+import net.thomasclaxton.ctatracker.model.Line
 import net.thomasclaxton.ctatracker.response.TrainTrackerResponse
 
 import retrofit2.Call
@@ -59,5 +67,17 @@ class MainActivity : AppCompatActivity() {
 //        print(t.message)
 //      }
 //    })
+  }
+
+  @Composable
+  fun LineList(lines: List<Line>) {
+    Column {
+      lines.forEach { line -> LineRow(line) }
+    }
+  }
+
+  @Composable
+  fun LineRow(line: Line) {
+    Text(text = line.name)
   }
 }
