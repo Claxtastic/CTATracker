@@ -9,8 +9,10 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import dagger.hilt.android.AndroidEntryPoint
 import net.thomasclaxton.ctatracker.model.Line
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
