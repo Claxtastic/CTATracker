@@ -1,6 +1,4 @@
-package net.thomasclaxton.ctatracker
-
-import net.thomasclaxton.ctatracker.model.Line
+package net.thomasclaxton.ctatracker.model
 
 object TrainConstants {
   val redStations = mapOf(

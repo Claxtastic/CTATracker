@@ -1,4 +1,4 @@
-package net.thomasclaxton.ctatracker.response
+package net.thomasclaxton.ctatracker.model.response
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
