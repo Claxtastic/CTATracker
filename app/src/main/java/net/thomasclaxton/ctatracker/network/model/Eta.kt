@@ -1,4 +1,4 @@
-package net.thomasclaxton.ctatracker
+package net.thomasclaxton.ctatracker.network.model
 
 data class Eta(
   val stationId: String,
@@ -16,8 +16,8 @@ data class Eta(
   val isSch: String,
   val isDly: String,
   val isFlt: String,
-  val flags: String,
-  val lat: String,
-  val lon: String,
+  val flags: String?,
+  val lat: String?,
+  val lon: String?,
   val heading: String
 )

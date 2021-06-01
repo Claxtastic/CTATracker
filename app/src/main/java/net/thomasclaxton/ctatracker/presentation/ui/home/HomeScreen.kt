@@ -1,4 +1,4 @@
-package net.thomasclaxton.ctatracker.composable
+package net.thomasclaxton.ctatracker.presentation.ui.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row

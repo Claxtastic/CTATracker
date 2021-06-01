@@ -49,13 +49,13 @@ data class EtaDto(
   val isFlt: String,
 
   @SerializedName("isFlags")
-  val flags: String,
+  val flags: String?,
 
   @SerializedName("isLat")
-  val lat: String,
+  val lat: String?,
 
   @SerializedName("isLon")
-  val lon: String,
+  val lon: String?,
 
   @SerializedName("heading")
   val heading: String

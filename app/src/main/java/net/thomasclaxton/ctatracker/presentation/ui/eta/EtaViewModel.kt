@@ -1,24 +1,37 @@
-package net.thomasclaxton.ctatracker
+package net.thomasclaxton.ctatracker.presentation.ui.eta
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.hilt.lifecycle.ViewModelInject
+import androidx.hilt.Assisted
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-import dagger.assisted.Assisted
 import kotlinx.coroutines.launch
+import net.thomasclaxton.ctatracker.network.model.Eta
+import net.thomasclaxton.ctatracker.repository.EtaRepository
 import java.lang.Exception
+import javax.inject.Inject
 
-class EtaViewModel @ViewModelInject
+@HiltViewModel
+@ExperimentalCoroutinesApi
+class EtaViewModel @Inject
 constructor(
-  private val repository: CtaRepository,
-  @Assisted stationId: Int
-  ) : ViewModel() {
+  private val repository: EtaRepository,
+  @Assisted private val state: SavedStateHandle
+) : ViewModel() {
 
   val eta: MutableState<List<Eta>> = mutableStateOf(ArrayList())
 
   val loading = mutableStateOf(false)
+
+  init {
+    state.get<Int>("stationId")?.let { stationId ->
+      onTriggerEvent(EtaEvent.GetEtaEvent(stationId = stationId))
+    }
+  }
 
   fun onTriggerEvent(event: EtaEvent) {
     viewModelScope.launch {
@@ -39,6 +52,8 @@ constructor(
 
     val eta = repository.getEtasByStationId(stationId=stationId)
     this.eta.value = eta
+
+    state.set("stationId", stationId)
 
     loading.value = false
   }

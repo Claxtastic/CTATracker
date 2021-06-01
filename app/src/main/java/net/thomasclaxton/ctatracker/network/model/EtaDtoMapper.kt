@@ -1,4 +1,4 @@
-package net.thomasclaxton.ctatracker
+package net.thomasclaxton.ctatracker.network.model
 
 import net.thomasclaxton.ctatracker.domain.EtaDto
 import net.thomasclaxton.ctatracker.domain.util.DomainMapper

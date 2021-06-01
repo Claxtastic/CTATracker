@@ -1,4 +1,4 @@
-package net.thomasclaxton.ctatracker.service
+package net.thomasclaxton.ctatracker.network
 
 import net.thomasclaxton.ctatracker.model.response.AlertResponse
 import net.thomasclaxton.ctatracker.model.response.EtaResponse

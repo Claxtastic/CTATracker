@@ -1,19 +1,18 @@
-package net.thomasclaxton.ctatracker
+package net.thomasclaxton.ctatracker.presentation.ui.eta
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.compose.setContent
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import net.thomasclaxton.ctatracker.composable.CTATheme
-import net.thomasclaxton.ctatracker.composable.EtaList
+import net.thomasclaxton.ctatracker.presentation.ui.CTATheme
 
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
@@ -29,20 +28,20 @@ class EtaFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View {
     super.onCreate(savedInstanceState)
-    // TODO: get stationId from extras
 
+    return ComposeView(requireContext()).apply {
+      setContent {
+        val eta = viewModel.eta.value
 
-    setContent {
-      val eta = viewModel.eta.value
+        val loading = viewModel.loading.value
 
-      val loading = viewModel.loading.value
-
-      CTATheme {
-        Surface {
-          EtaList(
-            loading = loading,
-            eta = eta
-          )
+        CTATheme {
+          Surface {
+            EtaList(
+              loading = loading,
+              eta = eta
+            )
+          }
         }
       }
     }

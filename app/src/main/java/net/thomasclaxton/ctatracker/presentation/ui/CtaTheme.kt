@@ -1,4 +1,4 @@
-package net.thomasclaxton.ctatracker.composable
+package net.thomasclaxton.ctatracker.presentation.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
