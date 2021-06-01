@@ -3,8 +3,8 @@ package net.thomasclaxton.ctatracker.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
-import net.thomasclaxton.ctatracker.service.CTAService
+import dagger.hilt.components.SingletonComponent
+import net.thomasclaxton.ctatracker.service.CtaService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,16 +12,16 @@ import javax.inject.Singleton
 import okhttp3.logging.HttpLoggingInterceptor
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class NetworkModule {
   @Provides
   @Singleton
-  fun providesRetrofit(okHttpClient: OkHttpClient): CTAService {
+  fun providesRetrofit(okHttpClient: OkHttpClient): CtaService {
     return Retrofit.Builder()
       .baseUrl("http://lapi.transitchicago.com/")
       .addConverterFactory(GsonConverterFactory.create())
       .client(okHttpClient)
-      .build().create(CTAService::class.java)
+      .build().create(CtaService::class.java)
   }
 
   @Provides

@@ -1,6 +1,7 @@
 package net.thomasclaxton.ctatracker.model
 
 import com.google.gson.annotations.SerializedName
+import net.thomasclaxton.ctatracker.domain.EtaDto
 
 data class Arrival(
   @SerializedName("tmst")
@@ -10,5 +11,5 @@ data class Arrival(
   @SerializedName("errNm")
   val errorNumber: Int,
   @SerializedName("eta")
-  val eta: List<ETA>
+  val eta: List<EtaDto>
 )

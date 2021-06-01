@@ -78,6 +78,8 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-rxjava2:$composeVersion")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
 
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
+
     // Room components
     implementation "androidx.room:room-ktx:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"

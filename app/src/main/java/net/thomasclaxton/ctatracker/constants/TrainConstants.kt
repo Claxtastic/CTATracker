@@ -1,4 +1,6 @@
-package net.thomasclaxton.ctatracker.model
+package net.thomasclaxton.ctatracker.constants
+
+import net.thomasclaxton.ctatracker.model.Line
 
 object TrainConstants {
   val redStations = mapOf(
@@ -214,13 +216,13 @@ object TrainConstants {
   )
 
   val lines = listOf(
-    Line("Red Line", "To Howard", "To 95th/Dan Ryan","#9E0A26"),
-    Line("Blue Line", "To O'Hare", "To Forest Park", "#0181B2"),
-    Line("Brown Line", "To Kimball", "To Loop", "#4E2B16"),
-    Line("Green Line", "To Harlem/Lake", "To 63rd/Cottage Grove", "#007C2E"),
-    Line("Orange Line", "To Loop", "To Midway", "#BA270F"),
-    Line("Purple Line", "To Linden", "To Howard or Loop", "#421C7A"),
-    Line("Pink Line", "To Loop", "To 54th/Cermak", "#771B40"),
-    Line("Yellow Line", "To Dempster-Skokie" , "To Howard","#C7B525")
+    Line("Red Line", "To Howard", "To 95th/Dan Ryan", redStations, "#9E0A26"),
+    Line("Blue Line", "To O'Hare", "To Forest Park", blueStations,"#0181B2"),
+    Line("Brown Line", "To Kimball", "To Loop", brownStations,"#4E2B16"),
+    Line("Green Line", "To Harlem/Lake", "To 63rd/Cottage Grove", greenStations,"#007C2E"),
+    Line("Orange Line", "To Loop", "To Midway", orangeStations, "#BA270F"),
+    Line("Purple Line", "To Linden", "To Howard or Loop", purpleStations, "#421C7A"),
+    Line("Pink Line", "To Loop", "To 54th/Cermak", pinkStations,"#771B40"),
+    Line("Yellow Line", "To Dempster-Skokie" , "To Howard", yellowStations, "#C7B525")
   )
 }

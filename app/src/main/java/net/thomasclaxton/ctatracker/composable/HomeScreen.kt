@@ -1,4 +1,4 @@
-package net.thomasclaxton.ctatracker.screen
+package net.thomasclaxton.ctatracker.composable
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -12,52 +12,44 @@ import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import net.thomasclaxton.ctatracker.model.TrainConstants
+import net.thomasclaxton.ctatracker.constants.TrainConstants
 
 fun Color.Companion.parse(colorString: String): Color =
   Color(color = android.graphics.Color.parseColor(colorString))
 
-@Preview
 @Composable
-fun HomeScreen() {
-  val currentLine = remember { mutableStateOf(TrainConstants.lines[0]) }
-  val showDialog = remember { mutableStateOf(false) }
+fun HomeScreen(onEtaClick: () -> Unit) {
+  var currentLine by remember { mutableStateOf(TrainConstants.lines[0]) }
+  var showDialog by remember { mutableStateOf(false) }
 
-  if (showDialog.value) {
-    AlertDialog(
-      onDismissRequest = { showDialog.value = false },
+  if (showDialog) {
+    AlertDialog(onDismissRequest = { showDialog = false },
       title = {
         Text(text = "Choose Direction")
       },
       confirmButton = {
-        Button(
-          onClick = {}) {
-          Text(currentLine.value.direction1)
+        Button(onClick = { onEtaClick() }) {
+          Text(currentLine.direction1)
         }
       },
       dismissButton = {
-        Button(
-          onClick = {}) {
-          Text(currentLine.value.direction2)
+        Button(onClick = { onEtaClick() }) {
+          Text(currentLine.direction2)
         }
       }
     )
   }
 
   LazyColumn {
-    itemsIndexed(items = TrainConstants.lines, ) { _, line ->
+    itemsIndexed(items = TrainConstants.lines) { _, line ->
       Row {
-        Card(
-          modifier = Modifier.clickable {
-            currentLine.value = line
-            showDialog.value = true
+        Card(modifier = Modifier.clickable {
+            currentLine = line
+            showDialog = true
           },
           shape = RoundedCornerShape(3.dp),
           elevation = 12.dp,
