@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/lineListFragment"
-        android:name="net.thomasclaxton.ctatracker.presentation.ui.home.LineListFragment"
+        android:name="net.thomasclaxton.ctatracker.presentation.ui.lines.LineListFragment"
         android:label="LineListFragment">
 
         <action

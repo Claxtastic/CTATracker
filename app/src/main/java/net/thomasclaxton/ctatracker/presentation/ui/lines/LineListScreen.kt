@@ -1,4 +1,4 @@
-package net.thomasclaxton.ctatracker.presentation.ui.home
+package net.thomasclaxton.ctatracker.presentation.ui.lines
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -22,7 +22,7 @@ fun Color.Companion.parse(colorString: String): Color =
   Color(color = android.graphics.Color.parseColor(colorString))
 
 @Composable
-fun HomeScreen(onRouteClick: (HashMap<String, Int>) -> Unit) {
+fun LineListScreen(onRouteClick: (HashMap<String, Int>) -> Unit) {
   var currentLine by remember { mutableStateOf(TrainConstants.lines[0]) }
   var showDialog by remember { mutableStateOf(false) }
 

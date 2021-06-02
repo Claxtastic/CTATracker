@@ -2,6 +2,7 @@ package net.thomasclaxton.ctatracker.network.model
 
 import net.thomasclaxton.ctatracker.domain.EtaDto
 import net.thomasclaxton.ctatracker.domain.util.DomainMapper
+import java.util.*
 
 class EtaDtoMapper : DomainMapper<EtaDto, Eta> {
   override fun mapToDomainModel(model: EtaDto): Eta {

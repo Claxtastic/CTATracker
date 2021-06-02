@@ -1,4 +1,4 @@
-package net.thomasclaxton.ctatracker.presentation.ui.home
+package net.thomasclaxton.ctatracker.presentation.ui.lines
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,7 +27,7 @@ class LineListFragment : Fragment() {
       setContent {
         CtaTheme {
           Surface(color = MaterialTheme.colors.background) {
-            HomeScreen(onRouteClick = {
+            LineListScreen(onRouteClick = {
               val bundle = Bundle().apply { putSerializable("stations", it) }
               findNavController().navigate(R.id.viewStations, bundle)
             })
