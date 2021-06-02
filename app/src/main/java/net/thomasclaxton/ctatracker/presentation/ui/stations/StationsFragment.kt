@@ -1,8 +1,6 @@
 package net.thomasclaxton.ctatracker.presentation.ui.stations
 
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,18 +9,17 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import net.thomasclaxton.ctatracker.R
 import net.thomasclaxton.ctatracker.presentation.ui.CtaTheme
 
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
-class StationsFragment() : Fragment(), Parcelable {
+class StationsFragment : Fragment() {
 
   private val viewModel: StationsViewModel by viewModels()
-
-  constructor(parcel: Parcel) : this() {
-  }
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -39,28 +36,17 @@ class StationsFragment() : Fragment(), Parcelable {
 
         CtaTheme {
           Surface(color = MaterialTheme.colors.background) {
-            StationsList(loading = loading, stations = stations)
+            StationsList(
+              loading = loading,
+              stations = stations,
+              onStationClick = {
+                val bundle = Bundle().apply { putInt("stationId", it) }
+                findNavController().navigate(R.id.viewEta, bundle)
+              }
+            )
           }
         }
       }
-    }
-  }
-
-  override fun writeToParcel(parcel: Parcel, flags: Int) {
-
-  }
-
-  override fun describeContents(): Int {
-    return 0
-  }
-
-  companion object CREATOR : Parcelable.Creator<StationsFragment> {
-    override fun createFromParcel(parcel: Parcel): StationsFragment {
-      return StationsFragment(parcel)
-    }
-
-    override fun newArray(size: Int): Array<StationsFragment?> {
-      return arrayOfNulls(size)
     }
   }
 }

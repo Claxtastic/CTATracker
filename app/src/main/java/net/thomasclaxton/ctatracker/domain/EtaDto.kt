@@ -58,5 +58,5 @@ data class EtaDto(
   val lon: String?,
 
   @SerializedName("heading")
-  val heading: String
+  val heading: String?
 )

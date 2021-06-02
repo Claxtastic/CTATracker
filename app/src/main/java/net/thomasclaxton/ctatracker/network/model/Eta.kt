@@ -19,5 +19,5 @@ data class Eta(
   val flags: String?,
   val lat: String?,
   val lon: String?,
-  val heading: String
+  val heading: String?
 )

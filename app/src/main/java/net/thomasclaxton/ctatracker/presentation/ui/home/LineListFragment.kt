@@ -28,8 +28,7 @@ class LineListFragment : Fragment() {
         CtaTheme {
           Surface(color = MaterialTheme.colors.background) {
             HomeScreen(onRouteClick = {
-              val bundle = Bundle()
-              bundle.putSerializable("stations", it)
+              val bundle = Bundle().apply { putSerializable("stations", it) }
               findNavController().navigate(R.id.viewStations, bundle)
             })
           }
