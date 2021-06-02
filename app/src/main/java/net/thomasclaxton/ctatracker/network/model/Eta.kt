@@ -1,7 +1,12 @@
 package net.thomasclaxton.ctatracker.network.model
 
+import android.util.Log
 import java.text.SimpleDateFormat
+import java.time.Duration
 import java.util.*
+import java.util.concurrent.TimeUnit
+
+private const val TAG = "Eta"
 
 data class Eta(
   val stationId: String,
@@ -28,10 +33,11 @@ data class Eta(
   private val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
 
   fun timeUntilArrival(): Pair<Long, Long> {
-    val diff: Long = format.parse(arrivalTime).time - Date().time
-    val seconds = diff / 1000
-    val minutes = seconds / 60
+    val diffMillis: Long = format.parse(arrivalTime).time - Date().time
+    val minutes = TimeUnit.MILLISECONDS.toMinutes(diffMillis)
+    val seconds = TimeUnit.MILLISECONDS.toSeconds(diffMillis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(diffMillis))
 
+    Log.d(TAG, "timeUntilArrival: $minutes m, $seconds s")
     return Pair(minutes, seconds)
   }
 }

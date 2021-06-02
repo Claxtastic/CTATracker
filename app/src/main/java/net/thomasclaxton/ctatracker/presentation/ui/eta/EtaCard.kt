@@ -29,9 +29,10 @@ fun EtaCard(
           .fillMaxWidth()
           .padding(top = 12.dp, bottom = 12.dp, start = 8.dp, end = 8.dp)
       ) {
+        val timePair: Pair<Long, Long> = arrival.timeUntilArrival()
         Text(text = arrival.runNumber)
         Spacer(modifier = Modifier.width(8.dp))
-        Text(text = arrival.timeUntilArrival().first.toString())
+        Text(text = "${timePair.first}m ${timePair.second}s")
       }
     }
   }
