@@ -21,8 +21,10 @@ import net.thomasclaxton.ctatracker.constants.TrainConstants
 fun Color.Companion.parse(colorString: String): Color =
   Color(color = android.graphics.Color.parseColor(colorString))
 
+//  onRouteClick: (HashMap<String, Int>) -> Unit
+
 @Composable
-fun HomeScreen(onEtaClick: () -> Unit) {
+fun HomeScreen() {
   var currentLine by remember { mutableStateOf(TrainConstants.lines[0]) }
   var showDialog by remember { mutableStateOf(false) }
 
@@ -32,12 +34,12 @@ fun HomeScreen(onEtaClick: () -> Unit) {
         Text(text = "Choose Direction")
       },
       confirmButton = {
-        Button(onClick = { onEtaClick() }) {
+        Button(onClick = {  }) {
           Text(currentLine.direction1)
         }
       },
       dismissButton = {
-        Button(onClick = { onEtaClick() }) {
+        Button(onClick = {  }) {
           Text(currentLine.direction2)
         }
       }
@@ -48,9 +50,9 @@ fun HomeScreen(onEtaClick: () -> Unit) {
     itemsIndexed(items = TrainConstants.lines) { _, line ->
       Row {
         Card(modifier = Modifier.clickable {
-            currentLine = line
-            showDialog = true
-          },
+          currentLine = line
+          showDialog = true
+        },
           shape = RoundedCornerShape(3.dp),
           elevation = 12.dp,
           backgroundColor = Color.parse(line.color)

@@ -16,6 +16,15 @@
     <fragment
         android:id="@+id/etaFragment"
         android:name="net.thomasclaxton.ctatracker.presentation.ui.eta.EtaFragment"
-        android:label="EtaFragment" />
+        android:label="EtaFragment" >
+        <action
+            android:id="@+id/viewStations"
+            app:destination="@id/stationsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/stationsFragment"
+        android:name="net.thomasclaxton.ctatracker.presentation.ui.stations.StationsFragment"
+        android:label="StationsFragment" />
 
 </navigation>

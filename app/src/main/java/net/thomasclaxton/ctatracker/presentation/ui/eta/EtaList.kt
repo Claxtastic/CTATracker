@@ -6,7 +6,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import net.thomasclaxton.ctatracker.network.model.Eta
-import net.thomasclaxton.ctatracker.presentation.ui.eta.EtaCard
 
 @Composable
 fun EtaList(
@@ -20,7 +19,7 @@ fun EtaList(
       LazyColumn {
         itemsIndexed(
           items = eta
-        ) { index, arrival ->
+        ) { _, arrival ->
           EtaCard(arrival = arrival)
         }
       }

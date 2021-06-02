@@ -3,7 +3,7 @@ package net.thomasclaxton.ctatracker.constants
 import net.thomasclaxton.ctatracker.model.Line
 
 object TrainConstants {
-  val redStations = mapOf(
+  val redStations = hashMapOf(
     "47th" to 41230,
     "63rd" to 40910,
     "69th" to 40990,
@@ -38,7 +38,7 @@ object TrainConstants {
     "Wilson" to 40540
   )
 
-  val blueStations = mapOf(
+  val blueStations = hashMapOf(
     "Addison" to 41240,
     "Austin" to 40010,
     "Belmont" to 40060,
@@ -74,7 +74,7 @@ object TrainConstants {
     "Western (O'Hare)" to 40670
   )
 
-  val orangeStations = mapOf(
+  val orangeStations = hashMapOf(
     "35th/Archer" to 40120,
     "Adams/Wabash" to 40680,
     "Ashland" to 41060,
@@ -93,13 +93,13 @@ object TrainConstants {
     "Western" to 40310
   )
 
-  val yellowStations = mapOf(
+  val yellowStations = hashMapOf(
     "Dempster-Skokie" to 40140,
     "Howard" to 40900,
     "Oakton-Skokie" to 41680
   )
 
-  val greenStations = mapOf(
+  val greenStations = hashMapOf(
     "35th-Bronzeville-IIT" to 41220,
     "43rd" to 41270,
     "51st" to 40130,
@@ -131,7 +131,7 @@ object TrainConstants {
     "Washington/Wabash" to 41700
   )
 
-  val purpleStations = mapOf(
+  val purpleStations = hashMapOf(
     "Adams/Wabash" to 40680,
     "Armitage" to 40660,
     "Belmont" to 41320,
@@ -160,7 +160,7 @@ object TrainConstants {
     "Wilson" to 40540
   )
 
-  val pinkStations = mapOf(
+  val pinkStations = hashMapOf(
     "18th" to 40830,
     "54th/Cermak" to 40580,
     "Adams/Wabash" to 40680,
@@ -185,7 +185,7 @@ object TrainConstants {
     "Western" to 40730
   )
 
-  val brownStations = mapOf(
+  val brownStations = hashMapOf(
     "Adams/Wabash" to 40680,
     "Addison" to 41440,
     "Armitage" to 40660,

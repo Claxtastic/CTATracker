@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import net.thomasclaxton.ctatracker.R
-import net.thomasclaxton.ctatracker.presentation.ui.CTATheme
+import net.thomasclaxton.ctatracker.presentation.ui.CtaTheme
 
 @AndroidEntryPoint
 class LineListFragment : Fragment() {
@@ -23,14 +23,17 @@ class LineListFragment : Fragment() {
   ): View? {
     super.onCreate(savedInstanceState)
 
+//    onRouteClick = {
+//                val bundle = Bundle()
+//                bundle.putSerializable("stations", it)
+//                findNavController().navigate(R.id.viewStations, bundle)
+//              }
+
     return ComposeView(requireContext()).apply {
       setContent {
-        CTATheme {
+        CtaTheme {
           Surface(color = MaterialTheme.colors.background) {
-            HomeScreen(onEtaClick = {
-              val bundle = Bundle().apply { putInt("stationId", 40380) }
-              findNavController().navigate(R.id.viewEta, bundle)
-            })
+            HomeScreen()
           }
         }
       }

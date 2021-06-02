@@ -3,7 +3,7 @@ package net.thomasclaxton.ctatracker.model
 data class Alert(
   val AlertId: String,
   val Headline: String,
-  val FullDescription: Object,
+  val FullDescription: Any,
   val SeverityScore: String,
   val SeverityColor: String,
   val SeverityCSS: String,

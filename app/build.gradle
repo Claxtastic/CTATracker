@@ -8,7 +8,7 @@ plugins {
 def multidex_version = "2.0.1"
 def roomVersion = "2.3.0"
 def retroFitVersion = "2.9.0"
-def composeVersion = "1.0.0-beta07"
+def composeVersion = "1.0.0-beta08"
 def nav_version = "2.3.5"
 
 android {
@@ -57,6 +57,7 @@ android {
 dependencies {
     // Hilt
     implementation "com.google.dagger:hilt-android:$dagger_hilt_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.google.dagger:hilt-android-compiler:$dagger_hilt_version"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$dagger_hilt_androidx_version"
     kapt "androidx.hilt:hilt-compiler:$dagger_hilt_androidx_version"

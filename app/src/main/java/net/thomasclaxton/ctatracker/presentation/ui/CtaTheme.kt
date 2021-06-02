@@ -25,7 +25,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun CTATheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+fun CtaTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
   var colors = if (darkTheme)
     DarkColorPalette
   else

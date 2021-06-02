@@ -12,7 +12,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import net.thomasclaxton.ctatracker.presentation.ui.CTATheme
+import net.thomasclaxton.ctatracker.presentation.ui.CtaTheme
 
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
@@ -35,7 +35,7 @@ class EtaFragment : Fragment() {
 
         val loading = viewModel.loading.value
 
-        CTATheme {
+        CtaTheme {
           Surface {
             EtaList(
               loading = loading,

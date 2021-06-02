@@ -33,7 +33,7 @@ constructor(
     }
   }
 
-  fun onTriggerEvent(event: EtaEvent) {
+  private fun onTriggerEvent(event: EtaEvent) {
     viewModelScope.launch {
       try {
         when(event) {
