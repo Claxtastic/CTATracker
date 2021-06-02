@@ -23,17 +23,15 @@ class LineListFragment : Fragment() {
   ): View? {
     super.onCreate(savedInstanceState)
 
-//    onRouteClick = {
-//                val bundle = Bundle()
-//                bundle.putSerializable("stations", it)
-//                findNavController().navigate(R.id.viewStations, bundle)
-//              }
-
     return ComposeView(requireContext()).apply {
       setContent {
         CtaTheme {
           Surface(color = MaterialTheme.colors.background) {
-            HomeScreen()
+            HomeScreen(onRouteClick = {
+              val bundle = Bundle()
+              bundle.putSerializable("stations", it)
+              findNavController().navigate(R.id.viewStations, bundle)
+            })
           }
         }
       }

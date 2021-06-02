@@ -19,7 +19,7 @@ fun StationsList(
       // TODO: show loading
     } else {
       LazyColumn {
-        itemsIndexed(items = stations.keys as List<String>) { _, stationName ->
+        itemsIndexed(items = stations.keys.toList()) { _, stationName ->
           Card(shape = MaterialTheme.shapes.small, modifier = Modifier) {
             Text(text = stationName)
           }

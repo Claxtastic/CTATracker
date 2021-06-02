@@ -8,7 +8,7 @@ plugins {
 def multidex_version = "2.0.1"
 def roomVersion = "2.3.0"
 def retroFitVersion = "2.9.0"
-def composeVersion = "1.0.0-beta08"
+def composeVersion = "1.0.0-beta07"
 def nav_version = "2.3.5"
 
 android {

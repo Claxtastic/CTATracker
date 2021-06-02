@@ -8,9 +8,10 @@
         android:id="@+id/lineListFragment"
         android:name="net.thomasclaxton.ctatracker.presentation.ui.home.LineListFragment"
         android:label="LineListFragment">
+
         <action
-            android:id="@+id/viewEta"
-            app:destination="@+id/etaFragment" />
+            android:id="@+id/viewStations"
+            app:destination="@id/stationsFragment" />
     </fragment>
 
     <fragment
@@ -18,8 +19,8 @@
         android:name="net.thomasclaxton.ctatracker.presentation.ui.eta.EtaFragment"
         android:label="EtaFragment" >
         <action
-            android:id="@+id/viewStations"
-            app:destination="@id/stationsFragment" />
+            android:id="@+id/viewEta"
+            app:destination="@+id/etaFragment" />
     </fragment>
 
     <fragment
