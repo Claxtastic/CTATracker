@@ -32,11 +32,15 @@ class EtaFragment : Fragment() {
       setContent {
         val eta = viewModel.eta.value
 
+        val lineName = viewModel.lineName.value
+
+        val direction = viewModel.direction.value
+
         val loading = viewModel.loading.value
 
         CtaTheme {
           Scaffold(
-            topBar = { TopAppBar(title = { Text("Line to Direction") })}) {
+            topBar = { TopAppBar(title = { Text("$lineName to $direction") })}) {
             Surface {
               EtaList(
                 loading = loading,

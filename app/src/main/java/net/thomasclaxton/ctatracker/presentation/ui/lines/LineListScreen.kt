@@ -17,12 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import net.thomasclaxton.ctatracker.constants.TrainConstants
+import net.thomasclaxton.ctatracker.model.Line
 
 fun Color.Companion.parse(colorString: String): Color =
   Color(color = android.graphics.Color.parseColor(colorString))
 
 @Composable
-fun LineListScreen(onRouteClick: (HashMap<String, Int>) -> Unit) {
+fun LineListScreen(onLineClick: (Line, String) -> Unit) {
   var currentLine by remember { mutableStateOf(TrainConstants.lines[0]) }
   var showDialog by remember { mutableStateOf(false) }
 
@@ -32,12 +33,12 @@ fun LineListScreen(onRouteClick: (HashMap<String, Int>) -> Unit) {
         Text(text = "Choose Direction")
       },
       confirmButton = {
-        Button(onClick = { onRouteClick(currentLine.stations) }) {
+        Button(onClick = { onLineClick(currentLine, currentLine.direction1) }) {
           Text(currentLine.direction1)
         }
       },
       dismissButton = {
-        Button(onClick = { onRouteClick(currentLine.stations) }) {
+        Button(onClick = { onLineClick(currentLine, currentLine.direction2) }) {
           Text(currentLine.direction2)
         }
       }

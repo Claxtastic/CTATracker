@@ -1,6 +1,5 @@
 package net.thomasclaxton.ctatracker.presentation.ui.eta
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.hilt.Assisted
 import androidx.lifecycle.SavedStateHandle
@@ -23,11 +22,17 @@ constructor(
   @Assisted private val state: SavedStateHandle
 ) : ViewModel() {
 
-  val eta: MutableState<List<Eta>> = mutableStateOf(ArrayList())
+  val eta = mutableStateOf(listOf<Eta>())
+
+  val lineName = mutableStateOf("")
+
+  val direction = mutableStateOf("")
 
   val loading = mutableStateOf(false)
 
   init {
+    state.get<String>("lineName")?.let { this.lineName.value = it }
+    state.get<String>("direction")?.let{ this.direction.value = it }
     state.get<Int>("stationId")?.let { stationId ->
       onTriggerEvent(EtaEvent.GetEtaEvent(stationId = stationId))
     }

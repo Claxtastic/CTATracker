@@ -32,6 +32,10 @@ class StationsFragment : Fragment() {
       setContent {
         val stations = viewModel.stations.value
 
+        val lineName = viewModel.lineName.value
+
+        val chosenDirection = viewModel.direction.value
+
         val loading = viewModel.loading.value
 
         CtaTheme {
@@ -39,8 +43,14 @@ class StationsFragment : Fragment() {
             StationsList(
               loading = loading,
               stations = stations,
-              onStationClick = {
-                val bundle = Bundle().apply { putInt("stationId", it) }
+              lineName = lineName,
+              chosenDirection = chosenDirection,
+              onStationClick = { stationId, lineName, direction ->
+                val bundle = Bundle().apply {
+                  putInt("stationId", stationId)
+                  putString("lineName", lineName)
+                  putString("direction", direction)
+                }
                 findNavController().navigate(R.id.viewEta, bundle)
               }
             )

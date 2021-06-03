@@ -1,6 +1,5 @@
 package net.thomasclaxton.ctatracker.presentation.ui.stations
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.hilt.Assisted
 import androidx.lifecycle.SavedStateHandle
@@ -9,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
+import net.thomasclaxton.ctatracker.model.Line
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -17,13 +17,18 @@ import javax.inject.Inject
 class StationsViewModel @Inject
 constructor(@Assisted private val state: SavedStateHandle) : ViewModel() {
 
-  val stations: MutableState<Map<String, Int>> = mutableStateOf(mapOf())
+  val stations = mutableStateOf(mapOf<String, Int>())
+
+  val lineName = mutableStateOf("")
+
+  val direction = mutableStateOf("")
 
   val loading = mutableStateOf(false)
 
   init {
-    state.get<HashMap<String, Int>>("stations")?.let { stations ->
-      onTriggerEvent(StationsEvent.ShowStations(stations))
+    state.get<String>("chosenDirection")?.let { this.direction.value = it }
+    state.get<Line>("line")?.let { line ->
+      onTriggerEvent(StationsEvent.ShowStations(line))
     }
   }
 
@@ -32,7 +37,7 @@ constructor(@Assisted private val state: SavedStateHandle) : ViewModel() {
       try {
         when(event) {
           is StationsEvent.ShowStations -> {
-            showStations(event.stations)
+            showStations(event.line)
           }
         }
       } catch (e: Exception) {
@@ -41,10 +46,12 @@ constructor(@Assisted private val state: SavedStateHandle) : ViewModel() {
     }
   }
 
-  private fun showStations(stations: HashMap<String, Int>) {
+  private fun showStations(line: Line) {
     loading.value = true
 
-    this.stations.value = stations
+    this.stations.value = line.stations
+    this.lineName.value = line.name
+
     state.set("stations", stations)
 
     loading.value = false
