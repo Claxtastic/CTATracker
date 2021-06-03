@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
+import net.thomasclaxton.ctatracker.constants.StringConstants
 import net.thomasclaxton.ctatracker.model.Line
 import java.lang.Exception
 import javax.inject.Inject
@@ -19,15 +20,15 @@ constructor(@Assisted private val state: SavedStateHandle) : ViewModel() {
 
   val stations = mutableStateOf(mapOf<String, Int>())
 
-  val lineName = mutableStateOf("")
+  val color = mutableStateOf("")
 
   val direction = mutableStateOf("")
 
   val loading = mutableStateOf(false)
 
   init {
-    state.get<String>("chosenDirection")?.let { this.direction.value = it }
-    state.get<Line>("line")?.let { line ->
+    state.get<String>(StringConstants.direction)?.let { this.direction.value = it }
+    state.get<Line>(StringConstants.line)?.let { line ->
       onTriggerEvent(StationsEvent.ShowStations(line))
     }
   }
@@ -50,9 +51,9 @@ constructor(@Assisted private val state: SavedStateHandle) : ViewModel() {
     loading.value = true
 
     this.stations.value = line.stations
-    this.lineName.value = line.name
+    this.color.value = line.color
 
-    state.set("stations", stations)
+    state.set(StringConstants.stations, stations)
 
     loading.value = false
   }

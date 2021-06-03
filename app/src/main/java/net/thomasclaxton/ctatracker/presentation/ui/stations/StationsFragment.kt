@@ -13,6 +13,8 @@ import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import net.thomasclaxton.ctatracker.R
+import net.thomasclaxton.ctatracker.constants.ColorConstants
+import net.thomasclaxton.ctatracker.constants.StringConstants
 import net.thomasclaxton.ctatracker.presentation.ui.CtaTheme
 
 @AndroidEntryPoint
@@ -32,8 +34,6 @@ class StationsFragment : Fragment() {
       setContent {
         val stations = viewModel.stations.value
 
-        val lineName = viewModel.lineName.value
-
         val chosenDirection = viewModel.direction.value
 
         val loading = viewModel.loading.value
@@ -43,13 +43,12 @@ class StationsFragment : Fragment() {
             StationsList(
               loading = loading,
               stations = stations,
-              lineName = lineName,
               chosenDirection = chosenDirection,
-              onStationClick = { stationId, lineName, direction ->
+              onStationClick = { stationId, stationName, direction ->
                 val bundle = Bundle().apply {
-                  putInt("stationId", stationId)
-                  putString("lineName", lineName)
-                  putString("direction", direction)
+                  putInt(StringConstants.stationId, stationId)
+                  putString(StringConstants.stationName, stationName)
+                  putString(StringConstants.direction, direction)
                 }
                 findNavController().navigate(R.id.viewEta, bundle)
               }

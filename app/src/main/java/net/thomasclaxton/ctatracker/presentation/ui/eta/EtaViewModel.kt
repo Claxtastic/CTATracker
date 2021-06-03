@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 import kotlinx.coroutines.launch
+import net.thomasclaxton.ctatracker.constants.StringConstants
 import net.thomasclaxton.ctatracker.network.model.Eta
 import net.thomasclaxton.ctatracker.repository.EtaRepository
 import java.lang.Exception
@@ -24,16 +25,16 @@ constructor(
 
   val eta = mutableStateOf(listOf<Eta>())
 
-  val lineName = mutableStateOf("")
+  val stationName = mutableStateOf("")
 
   val direction = mutableStateOf("")
 
   val loading = mutableStateOf(false)
 
   init {
-    state.get<String>("lineName")?.let { this.lineName.value = it }
-    state.get<String>("direction")?.let{ this.direction.value = it }
-    state.get<Int>("stationId")?.let { stationId ->
+    state.get<String>(StringConstants.stationName)?.let { this.stationName.value = it }
+    state.get<String>(StringConstants.direction)?.let{ this.direction.value = it }
+    state.get<Int>(StringConstants.stationId)?.let { stationId ->
       onTriggerEvent(EtaEvent.GetEtaEvent(stationId = stationId))
     }
   }
@@ -58,7 +59,7 @@ constructor(
     val eta = repository.getEtasByStationId(stationId=stationId)
     this.eta.value = eta
 
-    state.set("stationId", stationId)
+    state.set(StringConstants.stationId, stationId)
 
     loading.value = false
   }

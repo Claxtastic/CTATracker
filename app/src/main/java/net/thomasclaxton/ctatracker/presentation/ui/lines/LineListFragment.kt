@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import net.thomasclaxton.ctatracker.R
+import net.thomasclaxton.ctatracker.constants.StringConstants
 import net.thomasclaxton.ctatracker.presentation.ui.CtaTheme
 
 @AndroidEntryPoint
@@ -29,8 +30,8 @@ class LineListFragment : Fragment() {
           Surface(color = MaterialTheme.colors.background) {
             LineListScreen(onLineClick = { line, chosenDirection ->
               val bundle = Bundle().apply {
-                putSerializable("line", line)
-                putSerializable("chosenDirection", chosenDirection)
+                putSerializable(StringConstants.line, line)
+                putSerializable(StringConstants.direction, chosenDirection)
               }
               findNavController().navigate(R.id.viewStations, bundle)
             })

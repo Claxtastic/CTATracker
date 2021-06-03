@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.*
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -32,7 +36,7 @@ class EtaFragment : Fragment() {
       setContent {
         val eta = viewModel.eta.value
 
-        val lineName = viewModel.lineName.value
+        val lineName = viewModel.stationName.value
 
         val direction = viewModel.direction.value
 
@@ -40,7 +44,13 @@ class EtaFragment : Fragment() {
 
         CtaTheme {
           Scaffold(
-            topBar = { TopAppBar(title = { Text("$lineName to $direction") })}) {
+            topBar = {
+              TopAppBar(
+                modifier = Modifier.height(48.dp),
+                title = {
+                  Text("$lineName toward ${direction.split("To ")[1]}")
+                }
+              )}) {
             Surface {
               EtaList(
                 loading = loading,

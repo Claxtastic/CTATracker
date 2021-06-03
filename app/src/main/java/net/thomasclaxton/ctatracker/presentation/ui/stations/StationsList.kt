@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 fun StationsList(
   loading: Boolean,
   stations: Map<String, Int>,
-  lineName: String,
   chosenDirection: String,
   onStationClick: (Int, String, String) -> Unit
 ) {
@@ -26,7 +25,7 @@ fun StationsList(
         itemsIndexed(items = stations.keys.toList()) { _, stationName ->
           Card(
             shape = MaterialTheme.shapes.small,
-            modifier = Modifier.clickable { onStationClick(stations[stationName]!!, lineName, chosenDirection) }) {
+            modifier = Modifier.clickable { onStationClick(stations[stationName]!!, stationName, chosenDirection) }) {
             Text(text = stationName)
           }
         }
