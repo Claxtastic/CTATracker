@@ -1,7 +1,5 @@
 package net.thomasclaxton.ctatracker.model
 
-import java.io.Serializable
-
 data class Line(
   val name: String,
   val direction1: String,

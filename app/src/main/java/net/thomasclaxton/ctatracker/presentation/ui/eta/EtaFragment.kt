@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
@@ -36,11 +35,14 @@ class EtaFragment : Fragment() {
         val loading = viewModel.loading.value
 
         CtaTheme {
-          Surface {
-            EtaList(
-              loading = loading,
-              eta = eta
-            )
+          Scaffold(
+            topBar = { TopAppBar(title = { Text("Line to Direction") })}) {
+            Surface {
+              EtaList(
+                loading = loading,
+                eta = eta
+              )
+            }
           }
         }
       }
